@@ -19,6 +19,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"runtime"
 	"time"
 
 	"github.com/opentracing/opentracing-go"
@@ -104,8 +105,8 @@ func (d *database) Get(ctx context.Context, customerID string) (*Customer, error
 	}
 
 	// Maryam Second review paper revision
-	//runtime.GOMAXPROCS(runtime.NumCPU())
-	//simulateKernelLoad(5 * time.Second)
+	runtime.GOMAXPROCS(runtime.NumCPU())
+	simulateKernelLoad(5 * time.Second)
 
 	// simulate RPC delay
 	delay.Sleep(config.MySQLGetDelay, config.MySQLGetDelayStdDev)
